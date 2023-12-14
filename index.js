@@ -25,19 +25,16 @@ function winningAlert(winner) {
  * That interacts with the UI
  */
 let turn = "x";
-checkWinner();
 function clickButton(index) {
   console.log(`Button number ${index} is clicked`);
   // Your main code here.
-  //let b1,b2,b3,b4,b5,b6,b7,b8;
-  checkWinner();
   if (turn == "x" && document.getElementById(index).innerHTML == "") {
-    checkWinner();
     fillButton(index, "x");
+    checkWinner();
     turn = "o";
   } else if (turn == "o" && document.getElementById(index).innerHTML == "") {
-    checkWinner();
     fillButton(index, "o");
+    checkWinner();
     turn = "x";
   }
 }
@@ -62,13 +59,8 @@ function checkWinner() {
     (b5 == b4 && b5 == b6 && b5 != "") ||
     (b7 == b8 && b9 == b7 && b7 != "")
   ) {
-    if (turn == "x") {
-      alert(`Horraaay, "O"  wins!`);
-      restartGame();
-    } else if (turn == "o") {
-      alert(`Horraaay, "X"  wins!`);
-      restartGame();
-    }
+    winningAlert(turn);
+    restartGame();
   } else if (
     b1 != "" &&
     b2 != "" &&
@@ -81,9 +73,12 @@ function checkWinner() {
     b9 != ""
   ) {
     alert(`Game Over`);
+
     restartGame();
   }
+  console.log("checking the winner");
 }
+
 function restartGame() {
   const b1 = (document.getElementById(1).innerHTML = "");
   const b2 = (document.getElementById(2).innerHTML = "");
@@ -94,4 +89,5 @@ function restartGame() {
   const b7 = (document.getElementById(7).innerHTML = "");
   const b8 = (document.getElementById(8).innerHTML = "");
   const b9 = (document.getElementById(9).innerHTML = "");
+  console.log("resting");
 }
