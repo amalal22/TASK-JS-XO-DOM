@@ -25,21 +25,24 @@ function winningAlert(winner) {
  * That interacts with the UI
  */
 let turn = "x";
+checkWinner();
 function clickButton(index) {
   console.log(`Button number ${index} is clicked`);
   // Your main code here.
   //let b1,b2,b3,b4,b5,b6,b7,b8;
+  checkWinner();
   if (turn == "x" && document.getElementById(index).innerHTML == "") {
+    checkWinner();
     fillButton(index, "x");
     turn = "o";
   } else if (turn == "o" && document.getElementById(index).innerHTML == "") {
+    checkWinner();
     fillButton(index, "o");
     turn = "x";
   }
-  checkWinner();
 }
 
-function checkWinner(index) {
+function checkWinner() {
   const b1 = document.getElementById(1).innerHTML;
   const b2 = document.getElementById(2).innerHTML;
   const b3 = document.getElementById(3).innerHTML;
@@ -60,13 +63,25 @@ function checkWinner(index) {
     (b7 == b8 && b9 == b7 && b7 != "")
   ) {
     if (turn == "x") {
-      alert(`Player "O"  you are the winner`);
+      alert(`Horraaay, "O"  wins!`);
+      restartGame();
     } else if (turn == "o") {
-      alert(`Player "X"  you are the winner`);
+      alert(`Horraaay, "X"  wins!`);
+      restartGame();
     }
+  } else if (
+    b1 != "" &&
+    b2 != "" &&
+    b3 != "" &&
+    b4 != "" &&
+    b5 != "" &&
+    b6 != "" &&
+    b7 != "" &&
+    b8 != "" &&
+    b9 != ""
+  ) {
+    alert(`Game Over`);
     restartGame();
-  } else {
-    console.log(`Game over`);
   }
 }
 function restartGame() {
