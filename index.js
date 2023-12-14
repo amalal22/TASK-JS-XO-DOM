@@ -54,9 +54,16 @@ function checkWinner(index) {
     (b2 == b5 && b2 == b8 && b2 != "") ||
     (b3 == b6 && b3 == b9 && b3 != "") ||
     (b1 == b5 && b1 == b9 && b1 != "") ||
-    (b3 == b5 && b3 == b7 && b3 != "")
+    (b3 == b5 && b3 == b7 && b3 != "") ||
+    (b1 == b2 && b1 == b3 && b1 != "") ||
+    (b5 == b4 && b5 == b6 && b5 != "") ||
+    (b7 == b8 && b9 == b7 && b7 != "")
   ) {
-    alert(`${b1} you are the winner`);
+    if (turn == "x") {
+      alert(`Player "O"  you are the winner`);
+    } else if (turn == "o") {
+      alert(`Player "X"  you are the winner`);
+    }
     restartGame();
   } else {
     console.log(`Game over`);
